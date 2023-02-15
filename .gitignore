@@ -1,2 +1,4 @@
 TAGS
 /tmp*
+/cmake-build-debug/
+/.idea/

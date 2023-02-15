@@ -956,3 +956,12 @@ endif()
 # Installation and packaging
 #
 include(cmake_modules/PHD2Packaging.cmake)
+
+
+SET(REMOTE_ROOT_DIR ${CMAKE_SOURCE_DIR}/remote)
+file(GLOB_RECURSE REMOTE_SRCS ${REMOTE_ROOT_DIR}/sdk/*.cpp ${REMOTE_ROOT_DIR}/server/*.cpp ${REMOTE_ROOT_DIR}/guider/*.cpp)
+file(GLOB_RECURSE REMOTE_HEADERS ${REMOTE_ROOT_DIR}/sdk/*.h ${REMOTE_ROOT_DIR}/server/*.h ${REMOTE_ROOT_DIR}/guider/*.h)
+
+ADD_LIBRARY(remote ${REMOTE_SRCS} ${REMOTE_HEADERS})
+ADD_EXECUTABLE(phd_remote.bin ${REMOTE_ROOT_DIR}/Remote.cpp ${REMOTE_ROOT_DIR}/Remote.h)
+TARGET_LINK_LIBRARIES(phd_remote.bin remote)
